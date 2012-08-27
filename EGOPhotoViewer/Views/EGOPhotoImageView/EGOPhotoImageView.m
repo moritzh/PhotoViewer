@@ -68,6 +68,7 @@
 		scrollView.backgroundColor = [UIColor blackColor];
 		scrollView.opaque = YES;
 		scrollView.delegate = self;
+      //  scrollView.scrollEnabled = NO;
 		[self addSubview:scrollView];
 		_scrollView = [scrollView retain];
 		[scrollView release];
@@ -283,7 +284,7 @@
 	
 	CGFloat factor = MAX(hfactor, vfactor);
 	
-	CGFloat newWidth = self.imageView.image.size.width / factor;
+	CGFloat newWidth = ceilf(self.imageView.image.size.width / factor);
 	CGFloat newHeight = self.imageView.image.size.height / factor;
 	
 	CGFloat leftOffset = (self.frame.size.width - newWidth) / 2;

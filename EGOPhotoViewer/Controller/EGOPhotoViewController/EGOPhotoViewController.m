@@ -849,7 +849,6 @@
 	} 
 	
 	[photoView setPhoto:[self.photoSource photoAtIndex:page]];
-	
     if (photoView.superview == nil) {
 		[self.scrollView addSubview:photoView];
 	}
