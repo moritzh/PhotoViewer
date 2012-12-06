@@ -329,7 +329,7 @@
 	if (!_popover && UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad && !_fromPopover) {
 		if (self.modalPresentationStyle == UIModalPresentationFullScreen) {
 			UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"Done") style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
-			self.navigationItem.rightBarButtonItem = doneButton;
+			self.navigationItem.leftBarButtonItem = doneButton;
 			[doneButton release];
 		}
 	} else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
@@ -353,13 +353,15 @@
 			UIBarButtonItem *scaleButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"egopv_fullscreen_button.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(toggleFullScreen:)];
 			self.navigationItem.rightBarButtonItem = scaleButton;
 			[scaleButton release];
-		}		
+		}
+        
+        self.navigationItem.rightBarButtonItem = action;
 
 		
 		UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"egopv_left.png"] style:UIBarButtonItemStylePlain target:self action:@selector(moveBack:)];
 		UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"egopv_right.png"] style:UIBarButtonItemStylePlain target:self action:@selector(moveForward:)];
 		
-		[self setToolbarItems:[NSArray arrayWithObjects:fixedLeft, flex, left, fixedCenter, right, flex, action, nil]];
+		[self setToolbarItems:[NSArray arrayWithObjects: fixedLeft, flex, left, fixedCenter, right, flex, nil]];
 		
 		_rightButton = right;
 		_leftButton = left;
